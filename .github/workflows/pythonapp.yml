@@ -23,6 +23,6 @@ jobs:
     - name: Build & Push Image
       run: |
         cd ./python
-        echo ${{ secrets.DOCKERHUBPASSWORD }} | docker login -u ${{ secrets.DOCKERHUBUSER }} --password-stdin
+        docker login -u ${{ secrets.DOCKERHUBUSER }} -p ${{ secrets.DOCKERHUBPASSWORD }}
         docker image build -t ${{ secrets.DOCKERHUBUSER }}/acg-training:hellov1.0 .
         docker push ${{ secrets.DOCKERHUBUSER }}/gitops:hellov1.0
