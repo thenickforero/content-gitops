@@ -12,6 +12,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Test
+      env:
+        TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ secrets.DOCKERHUBUSER }}
+        password: ${{ secrets.DOCKERHUBTOKEN }}
+      run: |
+        echo ${#TEST_GITHUB_TOKEN}
+        echo ${{ secrets.DOCKERHUBUSER }}
+        echo ${{ secrets.DOCKERHUBTOKEN }}
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
